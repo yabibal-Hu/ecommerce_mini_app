@@ -1,0 +1,714 @@
+
+# API Documentation for E-commerce Telegram Mini App
+
+## 1. Users
+
+### Endpoint: /api/users
+- **GET**: Retrieve a list of users.
+- **POST**: Create a new user.
+
+#### Request Body (for POST):
+{
+    "username": "string",
+    "first_name": "string",
+    "last_name": "string",
+    "phone_number": "string",
+    "role": "admin/customer/delivery",
+    "password_hash": "string",
+    "telegram_id": "string",
+    "preferred_language": "int"
+}
+
+#### Responses:
+- **201 Created**: User created successfully.
+    {
+        "message": "User created successfully.",
+        "user_id": "int"
+    }
+- **400 Bad Request**: Invalid input data.
+    {
+        "error": "Invalid input data.",
+        "details": "string"
+    }
+
+---
+
+## 2. Categories
+
+### Endpoint: /api/categories
+- **GET**: Retrieve a list of categories.
+- **POST**: Create a new category.
+
+#### Request Body (for POST):
+{
+    "name": "string",
+    "description": "string"
+}
+
+#### Responses:
+- **201 Created**: Category created successfully.
+    {
+        "message": "Category created successfully.",
+        "category_id": "int"
+    }
+- **400 Bad Request**: Invalid input data.
+    {
+        "error": "Invalid input data.",
+        "details": "string"
+    }
+
+---
+
+## 3. Products
+
+### Endpoint: /api/products
+- **GET**: Retrieve a list of products.
+- **POST**: Create a new product.
+
+#### Request Body (for POST):
+{
+    "name": "string",
+    "description": "string",
+    "price": "decimal",
+    "category_id": "int"
+}
+
+#### Responses:
+- **201 Created**: Product created successfully.
+    {
+        "message": "Product created successfully.",
+        "product_id": "int"
+    }
+- **400 Bad Request**: Invalid input data.
+    {
+        "error": "Invalid input data.",
+        "details": "string"
+    }
+
+---
+
+## 4. Orders
+
+### Endpoint: /api/orders
+- **GET**: Retrieve a list of orders.
+- **POST**: Create a new order.
+
+#### Request Body (for POST):
+{
+    "user_id": "int",
+    "delivery_id": "int",
+    "status": "pending/accepted/delivering/completed/cancelled",
+    "delivery_date": "datetime",
+    "pickup_address": "string",
+    "delivery_address": "string",
+    "price": "decimal"
+}
+
+#### Responses:
+- **201 Created**: Order created successfully.
+    {
+        "message": "Order created successfully.",
+        "order_id": "int"
+    }
+- **400 Bad Request**: Invalid input data.
+    {
+        "error": "Invalid input data.",
+        "details": "string"
+    }
+
+---
+
+## 5. Payments
+
+### Endpoint: /api/payments
+- **GET**: Retrieve a list of payments.
+- **POST**: Create a new payment.
+
+#### Request Body (for POST):
+{
+    "order_id": "int",
+    "amount": "decimal",
+    "payment_method": "cash/credit_card/online",
+    "status": "pending/completed/failed"
+}
+
+#### Responses:
+- **201 Created**: Payment created successfully.
+    {
+        "message": "Payment created successfully.",
+        "payment_id": "int"
+    }
+- **400 Bad Request**: Invalid input data.
+    {
+        "error": "Invalid input data.",
+        "details": "string"
+    }
+
+---
+
+## 6. Delivery Personnel
+
+### Endpoint: /api/delivery
+- **GET**: Retrieve a list of delivery personnel.
+- **POST**: Create a new delivery personnel record.
+
+#### Request Body (for POST):
+{
+    "user_id": "int",
+    "availability": "boolean",
+    "vehicle_type": "string",
+    "license_plate": "string"
+}
+
+#### Responses:
+- **201 Created**: Delivery personnel record created successfully.
+    {
+        "message": "Delivery personnel record created successfully.",
+        "delivery_id": "int"
+    }
+- **400 Bad Request**: Invalid input data.
+    {
+        "error": "Invalid input data.",
+        "details": "string"
+    }
+
+---
+
+## 7. Cart
+
+### Endpoint: /api/cart
+- **GET**: Retrieve a user's cart.
+- **POST**: Add an item to the cart.
+
+#### Request Body (for POST):
+{
+    "user_id": "int",
+    "product_id": "int",
+    "quantity": "int"
+}
+
+#### Responses:
+- **201 Created**: Item added to cart successfully.
+    {
+        "message": "Item added to cart successfully.",
+        "cart_id": "int"
+    }
+- **400 Bad Request**: Invalid input data.
+    {
+        "error": "Invalid input data.",
+        "details": "string"
+    }
+
+---
+
+## 8. Favorites
+
+### Endpoint: /api/favorites
+- **GET**: Retrieve a user's favorite products.
+- **POST**: Add a product to favorites.
+
+#### Request Body (for POST):
+{
+    "user_id": "int",
+    "product_id": "int"
+}
+
+#### Responses:
+- **201 Created**: Product added to favorites successfully.
+    {
+        "message": "Product added to favorites successfully.",
+        "favorite_id": "int"
+    }
+- **400 Bad Request**: Invalid input data.
+    {
+        "error": "Invalid input data.",
+        "details": "string"
+    }
+
+---
+
+## 9. Languages
+
+### Endpoint: /api/languages
+- **GET**: Retrieve a list of languages.
+- **POST**: Create a new language.
+
+#### Request Body (for POST):
+{
+    "language_code": "string",
+    "language_name": "string"
+}
+
+#### Responses:
+- **201 Created**: Language created successfully.
+    {
+        "message": "Language created successfully.",
+        "language_id": "int"
+    }
+- **400 Bad Request**: Invalid input data.
+    {
+        "error": "Invalid input data.",
+        "details": "string"
+    }
+
+---
+
+## 10. Theme Settings
+
+### Endpoint: /api/themes
+- **GET**: Retrieve theme settings for a user.
+- **POST**: Update theme preference for a user.
+
+#### Request Body (for POST):
+{
+    "user_id": "int",
+    "theme_preference": "light/dark"
+}
+
+#### Responses:
+- **200 OK**: Theme preference updated successfully.
+    {
+        "message": "Theme preference updated successfully."
+    }
+- **400 Bad Request**: Invalid input data.
+    {
+        "error": "Invalid input data.",
+        "details": "string"
+    }
+
+---
+
+## 11. Delivery Routes
+
+### Endpoint: /api/delivery-routes
+- **GET**: Retrieve delivery routes for an order.
+- **POST**: Create a new delivery route.
+
+#### Request Body (for POST):
+{
+    "order_id": "int",
+    "pickup_lat": "decimal",
+    "pickup_long": "decimal",
+    "delivery_lat": "decimal",
+    "delivery_long": "decimal",
+    "distance": "decimal"
+}
+
+#### Responses:
+- **201 Created**: Delivery route created successfully.
+    {
+        "message": "Delivery route created successfully.",
+        "route_id": "int"
+    }
+- **400 Bad Request**: Invalid input data.
+    {
+        "error": "Invalid input data.",
+        "details": "string"
+    }
+
+---
+
+## 12. Feedback
+
+### Endpoint: /api/feedback
+- **GET**: Retrieve feedback for users.
+- **POST**: Submit feedback.
+
+#### Request Body (for POST):
+{
+    "user_id": "int",
+    "feedback": "string"
+}
+
+#### Responses:
+- **201 Created**: Feedback submitted successfully.
+    {
+        "message": "Feedback submitted successfully.",
+        "feedback_id": "int"
+    }
+- **400 Bad Request**: Invalid input data.
+    {
+        "error": "Invalid input data.",
+        "details": "string"
+    }
+
+---
+
+### Notes
+- Replace placeholder values like `string`, `decimal`, `int`, and `datetime` with actual values as per your application requirements.
+- Implement appropriate error handling in your application to manage bad requests, validation errors, and unexpected issues.
+- Consider using HTTP status codes effectively to indicate the success or failure of each operation.
+
+
+
+
+original
+ API Documentation
+ Base URL: /api/v1
+ 1. User Endpoints
+ 1.1. Create User
+ URL: /users
+ Method: POST
+ Description: Creates a new user (either customer, admin, or delivery personnel).
+ Request Body:
+ json
+ Copy code
+ {
+   "username": "string",
+   "first_name": "string",
+   "last_name": "string",
+   "phone_number": "string",
+   "role": "admin|customer|delivery",
+   "password": "string",
+   "telegram_id": "string",
+   "preferred_language": 1
+ }
+ Response:
+ json
+ Copy code
+ {
+   "message": "User created successfully",
+   "user_id": 1
+ }
+ 1.2. Get User by ID
+ URL: /users/{user_id}
+ Method: GET
+ Description: Retrieves a user by their ID.
+ Response:
+ json
+ Copy code
+ {
+   "user_id": 1,
+   "username": "admin",
+   "first_name": "Default",
+   "last_name": "Admin",
+   "phone_number": "1234567890",
+   "role": "admin",
+   "telegram_id": "123456789",
+   "preferred_language": 1
+ }
+ 1.3. Update User
+ URL: /users/{user_id}
+ Method: PUT
+ Description: Updates user information.
+ Request Body:
+ json
+ Copy code
+ {
+   "first_name": "string",
+   "last_name": "string",
+   "phone_number": "string",
+   "role": "admin|customer|delivery",
+   "preferred_language": 1
+ }
+ Response:
+ json
+ Copy code
+ {
+   "message": "User updated successfully"
+ }
+ 1.4. Delete User
+ URL: /users/{user_id}
+ Method: DELETE
+ Description: Deletes a user by ID.
+ Response:
+ json
+ Copy code
+ {
+   "message": "User deleted successfully"
+ }
+ 2. Product Endpoints
+ 2.1. Create Product
+ URL: /products
+ Method: POST
+ Description: Adds a new product to a category.
+ Request Body:
+ json
+ Copy code
+ {
+   "name": "string",
+   "description": "string",
+   "price": 10.99,
+   "category_id": 1,
+   "available": true
+ }
+ Response:
+ json
+ Copy code
+ {
+   "message": "Product created successfully",
+   "product_id": 1
+ }
+ 2.2. Get All Products
+ URL: /products
+ Method: GET
+ Description: Fetches a list of all products.
+ Response:
+ json
+ Copy code
+ [
+   {
+     "product_id": 1,
+     "name": "Pizza",
+     "description": "Delicious cheese pizza",
+     "price": 10.99,
+     "category_id": 1,
+     "available": true
+   }
+ ]
+ 2.3. Get Product by ID
+ URL: /products/{product_id}
+ Method: GET
+ Description: Fetches details of a specific product by ID.
+ Response:
+ json
+ Copy code
+ {
+   "product_id": 1,
+   "name": "Pizza",
+   "description": "Delicious cheese pizza",
+   "price": 10.99,
+   "category_id": 1,
+   "available": true
+ }
+ 2.4. Update Product
+ URL: /products/{product_id}
+ Method: PUT
+ Description: Updates the details of a product.
+ Request Body:
+ json
+ Copy code
+ {
+   "name": "string",
+   "description": "string",
+   "price": 12.99,
+   "category_id": 1,
+   "available": false
+ }
+ Response:
+ json
+ Copy code
+ {
+   "message": "Product updated successfully"
+ }
+ 2.5. Delete Product
+ URL: /products/{product_id}
+ Method: DELETE
+ Description: Deletes a product.
+ Response:
+ json
+ Copy code
+ {
+   "message": "Product deleted successfully"
+ }
+ 3. Order Endpoints
+ 3.1. Create Order
+ URL: /orders
+ Method: POST
+ Description: Creates a new order.
+ Request Body:
+ json
+ Copy code
+ {
+   "user_id": 1,
+   "delivery_id": 2,
+   "pickup_address": "string",
+   "delivery_address": "string",
+   "price": 25.50
+ }
+ Response:
+ json
+ Copy code
+ {
+   "message": "Order created successfully",
+   "order_id": 1
+ }
+ 3.2. Get All Orders
+ URL: /orders
+ Method: GET
+ Description: Retrieves a list of all orders.
+ Response:
+ json
+ Copy code
+ [
+   {
+     "order_id": 1,
+     "user_id": 1,
+     "status": "pending",
+     "pickup_address": "string",
+     "delivery_address": "string",
+     "price": 25.50
+   }
+ ]
+ 3.3. Update Order Status
+ URL: /orders/{order_id}/status
+ Method: PATCH
+ Description: Updates the status of an order.
+ Request Body:
+ json
+ Copy code
+ {
+   "status": "accepted|delivering|completed|cancelled"
+ }
+ Response:
+ json
+ Copy code
+ {
+   "message": "Order status updated"
+ }
+ 3.4. Delete Order
+ URL: /orders/{order_id}
+ Method: DELETE
+ Description: Deletes an order.
+ Response:
+ json
+ Copy code
+ {
+   "message": "Order deleted successfully"
+ }
+ 4. Payment Endpoints
+ 4.1. Make Payment
+ URL: /payments
+ Method: POST
+ Description: Processes a payment for an order.
+ Request Body:
+ json
+ Copy code
+ {
+   "order_id": 1,
+   "amount": 25.50,
+   "payment_method": "cash|credit_card|online"
+ }
+ Response:
+ json
+ Copy code
+ {
+   "message": "Payment completed successfully",
+   "payment_id": 1
+ }
+ 4.2. Get Payment Status
+ URL: /payments/{payment_id}
+ Method: GET
+ Description: Retrieves the status of a payment.
+ Response:
+ json
+ Copy code
+ {
+   "payment_id": 1,
+   "status": "completed",
+   "amount": 25.50
+ }
+ 5. Cart Endpoints
+ 5.1. Add Product to Cart
+ URL: /cart
+ Method: POST
+ Description: Adds a product to the user's cart.
+ Request Body:
+ json
+ Copy code
+ {
+   "user_id": 1,
+   "product_id": 1,
+   "quantity": 2
+ }
+ Response:
+ json
+ Copy code
+ {
+   "message": "Product added to cart",
+   "cart_id": 1
+ }
+ 5.2. View Cart
+ URL: /cart/{user_id}
+ Method: GET
+ Description: Retrieves the user's cart.
+ Response:
+ json
+ Copy code
+ [
+   {
+     "cart_id": 1,
+     "user_id": 1,
+     "product_id": 1,
+     "quantity": 2
+   }
+ ]
+ 5.3. Remove Product from Cart
+ URL: /cart/{cart_id}
+ Method: DELETE
+ Description: Removes a product from the user's cart.
+ Response:
+ json
+ Copy code
+ {
+   "message": "Product removed from cart"
+ }
+ 6. Favorites Endpoints
+ 6.1. Add Product to Favorites
+ URL: /favorites
+ Method: POST
+ Description: Adds a product to the user's favorites.
+ Request Body:
+ json
+ Copy code
+ {
+   "user_id": 1,
+   "product_id": 1
+ }
+ Response:
+ json
+ Copy code
+ {
+   "message": "Product added to favorites"
+ }
+ 6.2. View Favorites
+ URL: /favorites/{user_id}
+ Method: GET
+ Description: Retrieves the user's list of favorite products.
+ Response:
+ json
+ Copy code
+ [
+   {
+     "favorite_id": 1,
+     "user_id": 1,
+     "product_id": 1
+   }
+ ]
+ 7. Language and Theme Settings
+ 7.1. Update Language
+ URL: /users/{user_id}/language
+ Method: PATCH
+ Description: Updates the user's preferred language.
+ Request Body:
+ json
+ Copy code
+ {
+   "language_id": 2
+ }
+ Response:
+ json
+ Copy code
+ {
+   "message": "Preferred language updated"
+ }
+ 7.2. Update Theme
+ URL: /users/{user_id}/theme
+ Method: PATCH
+ Description: Updates the user's theme settings.
+ Request Body:
+ json
+ Copy code
+ {
+   "theme": "dark|light"
+ }
+ Response:
+ json
+ Copy code
+ {
+   "message": "Theme updated"
+ }
+original
+
+
+

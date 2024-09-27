@@ -1,0 +1,50 @@
+/backend
+│
+├── /src                      # Source code for the backend
+│   ├── /controllers          # Controller files for handling requests
+│   │   ├── userController.js # User-related logic
+│   │   ├── productController.js # Product-related logic
+│   │   └── ...               # Other controllers
+│   │
+│   ├── /middlewares          # Middleware functions for handling requests
+│   │   ├── authMiddleware.js # Authentication middleware
+│   │   ├── errorMiddleware.js # Error handling middleware
+│   │   └── ...               # Other middleware
+│   │
+│   ├── /models               # Database models or schemas
+│   │   ├── userModel.js      # User model for interacting with the users table
+│   │   ├── productModel.js   # Product model for interacting with the products table
+│   │   └── ...               # Other models
+│   │
+│   ├── /routes               # Route definitions
+│   │   ├── userRoutes.js     # User-related routes
+│   │   ├── productRoutes.js  # Product-related routes
+│   │   └── ...               # Other routes
+│   │
+│   ├── /config               # Configuration files
+│   │   ├── db.config.js      # Database connection settings
+│   │   ├── server.config.js   # Server configuration (port, etc.)
+│   │   └── ...               # Other configurations
+│   │
+│   ├── /services             # Service layer for business logic
+│   │   ├── userService.js    # User-related business logic
+│   │   ├── productService.js  # Product-related business logic
+│   │   └── ...               # Other services
+│   │
+│   ├── /utils                # Utility functions
+│   │   ├── logger.js         # Logger utility for logging
+│   │   ├── helpers.js        # Helper functions
+│   │   └── ...               # Other utilities
+│   │
+│   ├── /tests                # Test files
+│   │   ├── user.test.js      # Tests for user-related features
+│   │   ├── product.test.js   # Tests for product-related features
+│   │   └── ...               # Other tests
+│   │
+│   ├── app.js                # Main application file
+│   ├── server.js             # Server setup and configuration
+│   └── ...                   # Other files as needed
+│
+├── package.json              # Backend package.json
+├── .env                      # Environment variables for the backend
+└── nodemon.json              # Configuration for Nodemon (if used for auto-restarting the server)

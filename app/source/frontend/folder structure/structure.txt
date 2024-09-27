@@ -1,0 +1,55 @@
+/frontend
+│
+├── /components               # Reusable React components
+│   ├── Header.tsx            # Header component
+│   ├── Footer.tsx            # Footer component
+│   ├── Button.tsx            # Custom button component
+│   └── ...                   # Other reusable components
+│
+├── /pages                    # Next.js pages
+│   ├── index.tsx             # Home page
+│   ├── about.tsx             # About page
+│   ├── contact.tsx           # Contact page
+│   ├── _app.tsx              # Custom App component for global styles
+│   ├── _document.tsx         # Custom Document component for SSR (Server-Side Rendering)
+│   ├── api                   # API routes (if any)
+│   │   └── example.ts        # Example API route
+│   └── [dynamic].tsx         # Dynamic routes (e.g., product pages)
+│
+├── /public                   # Static assets
+│   ├── images                # Image files (logos, product images, etc.)
+│   ├── favicon.ico           # Favicon for the app
+│   └── ...                   # Other static files
+│
+├── /styles                   # CSS/Sass styles
+│   ├── globals.css           # Global styles for the application
+│   ├── Home.module.css       # Module-specific styles (CSS Modules)
+│   └── ...                   # Other stylesheets
+│
+├── /hooks                    # Custom React hooks
+│   ├── useAuth.ts            # Hook for authentication logic
+│   ├── useFetch.ts           # Hook for fetching data
+│   └── ...                   # Other custom hooks
+│
+├── /utils                    # Utility functions
+│   ├── api.ts                # API call functions
+│   ├── constants.ts          # Application constants (URLs, API keys, etc.)
+│   └── helpers.ts            # Helper functions
+│
+├── /context                  # Context API for global state management
+│   ├── AuthContext.tsx       # Authentication context
+│   ├── ThemeContext.tsx      # Theme context for dark/light mode
+│   └── ...                   # Other context files
+│
+├── /services                 # Service layer for API calls
+│   ├── userService.ts        # User-related API calls
+│   ├── productService.ts     # Product-related API calls
+│   └── ...                   # Other services
+│
+├── package.json              # Frontend package.json
+├── tsconfig.json             # TypeScript configuration file
+├── next-env.d.ts             # Next.js environment types
+├── next.config.js            # Next.js configuration file
+└── .env                      # Environment variables for the frontend
+
+
